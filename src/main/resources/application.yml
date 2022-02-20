@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: facebook
+          uri: https://facebook.com
+          predicates:
+            - Path=/fb/**
+        - id: instagram
+          uri: https://instagram.com/
+          predicates:
+            - Path=/insta/**
+        - id: twitter
+          uri: https://twitter.com/
+          predicates:
+            - Path=/tt/**
+
+server:
+  port: 8080
